@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="ERROR" 
+    strict="true" name="XMLConfigTest" 
+    xmlns="http://logging.apache.org/log4j/2.0/config"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config 
+           https://raw.githubusercontent.com/apache/logging-log4j2/log4j-2.13.1/log4j-core/src/main/resources/Log4j-config.xsd">
+
+    <Properties>
+        <Property name="logDir">log</Property>
+        <Property name="filename">test.log</Property>
+        <Property name="pattern">[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Appender type="Console" name="STDOUT">
+            <Layout type="PatternLayout" pattern="${pattern}"/>
+        </Appender>
+<!--  
+        <Appender type="File" name="File" fileName="${logDir}/${filename}">
+            <Layout type="PatternLayout" pattern="${pattern}"/>
+        </Appender>-->
+
+        <RollingFile name="rollingFile" fileName="${logDir}/application.log" filePattern="${logDir}/application.%i.log.gz"
+            ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>${pattern}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="de.urs.gui" level="INFO" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <!--<AppenderRef ref="File"/>-->
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+        <Logger name="de.urs.sql" level="INFO" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <!--<AppenderRef ref="File"/>-->
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+        <Logger name="de.urs.logic" level="INFO" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <!--<AppenderRef ref="File"/>-->
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+        <Logger name="de.urs.data" level="INFO" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <!--<AppenderRef ref="File"/>-->
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+        <Logger name="de.urs.logic.event.little" level="INFO" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+            <!--<AppenderRef ref="File"/>-->
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+
+        <Root level="warn">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
