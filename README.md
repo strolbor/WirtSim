@@ -1,9 +1,6 @@
 # Wirtschaftssimulator
-Wirtschaftssimulator by Urs-Benedict Braun
-Abteilung: Softwareentwicklung
-In der Zeit von 9. März 2020 bis 10. April 2020
+Wirtschaftssimulator 
 
-Urkonzept aus der Wirtschaftsinformatik der OvGu / IGS „Regine Hildebrandt“ (Schuljahr 2018/2019)
 
 ## Veränderung
 * executeBuy @ Control.class:
@@ -92,7 +89,7 @@ Urkonzept aus der Wirtschaftsinformatik der OvGu / IGS „Regine Hildebrandt“ 
 		* Spielstand sichern
 			* ___wenn früher fertig als gedacht___
 
-## benutze Bibliotheken
+## Benutze Bibliotheken
 * Gson
 	* Guide: https://sites.google.com/site/gson/gson-user-guide
 	* Doc: https://www.javadoc.io/doc/com.google.code.gson/gson/latest/com.google.gson/com/google/gson/package-summary.html
